@@ -1,0 +1,13 @@
+- include_vars: packages.yml
+
+- name: Install angular-dev packages
+  pacman:
+    name: "{{packages}}"
+    state: present
+  become: yes
+
+- name: install Angular CLI globally
+  shell:
+    cmd: yarn global add @angular/cli
+  become: yes
+  become_user: "{{ user }}"

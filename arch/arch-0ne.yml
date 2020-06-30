@@ -1,0 +1,14 @@
+  - hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
+      user: "benni"
+      user_home: "/home/{{ user }}"
+      stow_dir: "{{ user_home }}/homestow"
+      homestow_repo_url: "git@github.com:benjaminbauer/homestow.git"
+    roles:
+      - base
+      - base-dev
+      - angular-dev
+      - java-dev
+      - python-dev

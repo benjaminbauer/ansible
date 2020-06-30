@@ -1,0 +1,6 @@
+- include_vars: packages.yml
+
+- name: install python
+  pacman:
+    name: "{{ packages }}"
+  become: yes

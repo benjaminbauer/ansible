@@ -1,0 +1,21 @@
+  - hosts: localhost
+    gather_facts: no
+    vars:
+      proxy_env:
+        http_proxy: http://10.0.2.2:3128
+        https_proxy: http://10.0.2.2:3128
+      user: "vagrant"
+      # create this string with mkpasswd --method=sha-512
+      user_password: '$6$nCm1baV2jEg$Xc1WV3zxAYzQCX4ewej5ydoG30.OKrIlaIGgvMoj0oVG8tIURreyzHOqzAUG6slfNReLDqcaszMG.oCwEcd/l1'
+      user_home: "/home/{{ user }}"
+      stow_dir: "{{ user_home }}/homestow"
+      git_credentials_src_dir: "/vagrant/provisioning/credentials"
+      homestow_repo_url: "https://github.com/benjaminbauer/homestow.git"
+    roles:
+      - base
+      - base-dev
+      - angular-dev
+      - java-dev
+      - python-dev
+      - work
+    environment: "{{ proxy_env }}"

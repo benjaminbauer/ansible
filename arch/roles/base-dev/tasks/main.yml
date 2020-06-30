@@ -1,0 +1,32 @@
+- name: install vim-plug
+  command: sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+- name: clone mgitstatus
+  git:
+    repo: https://github.com/fboender/multi-git-status.git
+    version: master
+    dest: "/tmp/mgitstatus"
+    accept_hostkey: yes
+
+- name: install mgitstatus
+  shell:
+    cmd: "PREFIX={{ user_home }}/.local ./install.sh"
+    chdir: "/tmp/mgitstatus"
+
+- name: create code dir
+  file:
+    path: "{{ user_home }}/code"
+    state: directory
+    mode: '0755'
+
+- name: create code projects dir
+  file:
+    path: "{{ user_home }}/code/1-projects"
+    state: directory
+    mode: '0755'
+
+- name: create code areas dir
+  file:
+    path: "{{ user_home }}/code/2-areas"
+    state: directory
+    mode: '0755'

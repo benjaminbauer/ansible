@@ -1,0 +1,9 @@
+- copy:
+    src: bosch-proxy.sh
+    dest: /etc/profile.d/bosch-proxy.sh
+  become: yes
+
+- name: stow work
+  shell:
+    cmd: stow work
+    chdir: "{{ stow_dir }}"

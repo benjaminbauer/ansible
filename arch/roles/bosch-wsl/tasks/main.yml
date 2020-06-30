@@ -1,0 +1,23 @@
+  # clone homestow, after install base, since git is required
+- name: Copy file with owner and permissions
+  copy:
+    src: ~/.config/git/credentials
+    dest: "{{ user_home }}/.git-credentials"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: '0600'
+  
+- git_config:
+    name: credential.helper
+    scope: global
+    value: store
+
+#because proxy, thats why
+- name: Clone homestow via https
+  git:
+    repo: https://github.com/benjaminbauer/homestow.git
+    version: master
+    dest: "{{ stow_dir }}"
+    accept_hostkey: yes
+  # ssh-agent doesn't allow key to pass through remote sudo commands.
+

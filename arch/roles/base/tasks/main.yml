@@ -1,0 +1,54 @@
+- name: Make sure keyring is present and current
+  pacman:
+    name: archlinux-keyring
+    state: latest
+    update_cache: yes
+  become: yes
+
+- name: Install reflector to update mirrorlist
+  pacman:
+    name:
+      - reflector
+  become: yes
+
+- name: update mirrorlist
+  shell:
+    cmd: reflector -c DE -c CH -c AT -l 20 --fastest 10 --save /etc/pacman.d/mirrorlist
+  become: yes
+
+- name:  update pacman (pacman -Syu)
+  pacman:
+    update_cache: yes
+    upgrade: yes
+  become: yes
+
+- include_vars: packages.yml
+
+- name: Install base
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  become: yes
+
+- name: remove bashrc prior to stowing
+  file:
+    path: "{{ user_home }}/.bashrc"
+    state: absent
+
+- name: remove bash_profile prior to stowing
+  file:
+    path: "{{ user_home }}/.bash_profile"
+    state: absent
+
+- name: Clone homestow
+  git:
+    repo: "{{ homestow_repo_url }}"
+    version: master
+    dest: "{{ stow_dir }}"
+    accept_hostkey: yes
+
+- name: stow base
+  shell:
+    cmd: stow git nvim aliases bash fish
+    chdir: "{{ stow_dir }}"
+

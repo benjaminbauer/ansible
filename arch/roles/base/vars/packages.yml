@@ -1,0 +1,30 @@
+packages:
+  - base
+  - base-devel
+  - bat
+  - checkbashisms
+  - dash
+  - diffutils
+  - diff-so-fancy
+  - entr
+  - exa
+  - fd
+  - fish
+  - fzf
+  - git
+  - inetutils
+  - less
+  - man-db
+  - man-pages
+  - neovim
+  - nodejs
+  - npm
+  - openssh
+  - prettyping
+  - python-neovim
+  - python-pip
+  - ripgrep
+  - stow
+  - tldr
+  - wget
+

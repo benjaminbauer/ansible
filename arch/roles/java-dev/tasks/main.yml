@@ -1,0 +1,8 @@
+- include_vars: packages.yml
+
+- name: Install java-dev
+  pacman:
+    name: "{{ packages }}"
+    state: present
+  become: yes
+
