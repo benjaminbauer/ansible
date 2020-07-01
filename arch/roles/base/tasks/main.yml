@@ -30,6 +30,14 @@
     state: present
   become: yes
 
+- name: install rust by rustup
+  shell: curl https://sh.rustup.rs -sSf | sh -s -- -y
+  args:
+    warn: false
+
+- name: install starship prompt
+  shell: cargo install starship
+
 - name: remove bashrc prior to stowing
   file:
     path: "{{ user_home }}/.bashrc"
