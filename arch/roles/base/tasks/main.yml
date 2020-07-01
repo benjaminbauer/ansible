@@ -57,6 +57,6 @@
 
 - name: stow base
   shell:
-    cmd: stow git nvim aliases bash fish
+    cmd: stow git nvim aliases bash fish rust
     chdir: "{{ stow_dir }}"
 
