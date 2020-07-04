@@ -1,3 +1,5 @@
 packages:
   - python
   - python-pipenv
+  - python-language-server
+
