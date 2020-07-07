@@ -24,6 +24,7 @@ packages:
   - python-neovim
   - python-pip
   - ripgrep
+  - rust
   - stow
   - tldr
   - wget

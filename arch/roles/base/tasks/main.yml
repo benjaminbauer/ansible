@@ -30,10 +30,11 @@
     state: present
   become: yes
 
-- name: install rust by rustup
-  shell: curl https://sh.rustup.rs -sSf | sh -s -- -y
-  args:
-    warn: false
+# this does not work behind a proxy, reqwest does not seem to pickup the env correctly
+# - name: install rust by rustup
+#   shell: curl https://sh.rustup.rs -sSf | sh -s -- -y
+#   args:
+#     warn: false
 
 - name: install starship prompt
   shell: cargo install starship
