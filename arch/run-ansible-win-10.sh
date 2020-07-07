@@ -1,4 +1,6 @@
 #!/bin/sh
+SCRIPT=`realpath $0`
+SCRIPTPATH=`dirname $SCRIPT`
 
-ansible-playbook --connection=local win-10.yml
+ansible-playbook --connection=local "$SCRIPTPATH/win-10.yml"
 
