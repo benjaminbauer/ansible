@@ -49,6 +49,12 @@
     path: "{{ user_home }}/.bash_profile"
     state: absent
 
+- name: create .local/bin to prevent stow from "owning" it
+  file:
+    path: "{{ user_home }}/.local/bin"
+    state: directory
+    mode: '0750'
+
 - name: Clone homestow
   git:
     repo: "{{ homestow_repo_url }}"
