@@ -21,7 +21,7 @@ packages:
   - npm
   - openssh
   - prettyping
-  - python-neovim
+  - python-pynvim
   - python-pip
   - ripgrep
   - rust
