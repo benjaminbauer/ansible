@@ -3,6 +3,15 @@
     dest: /etc/profile.d/bosch-proxy.sh
   become: yes
 
+- copy:
+    src: bosch-ca.crt
+    dest: /tmp/bosch-ca.crt
+
+- name: trust Bosch CA
+  shell:
+    cmd: trust anchor /tmp/bosch-ca.crt
+  become: yes
+
 - name: stow work
   shell:
     cmd: stow work
