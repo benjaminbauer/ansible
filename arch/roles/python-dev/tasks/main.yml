@@ -4,3 +4,9 @@
   pacman:
     name: "{{ packages }}"
   become: yes
+
+- name: install poetry
+  shell: curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+  args:
+    warn: false
+
