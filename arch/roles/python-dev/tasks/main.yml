@@ -3,3 +3,6 @@
   args:
     warn: false
 
+- name: install pyls
+  shell: pip install python-language-server[all]
+
